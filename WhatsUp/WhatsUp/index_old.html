@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="articleApp">
+<head>
+    <title>WhatsUp</title>
+	<meta charset="utf-8" />
+</head>
+<body ng-controller="ArticleController as articleCtrl">
+
+<section>
+    <article ng-repeat="articleObject in articleCtrl.articleList">
+        <h2>{{articleObject.article.id}}</h2>
+        <h2>{{articleObject.article.title}}</h2>
+    </article>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script>
+    var articleApp = angular.module("articleApp", []);
+    articleApp.controller("ArticleController", ["$http", function($http) {
+        var _this = this;
+        _this.id = "";
+        _this.title = "";
+
+        var getArticles = function() {
+            var getArticlesUrl = "api/Customer/GetAllArticles";
+            $http
+                .get(getArticlesUrl)
+                .then(
+                    function(response) {
+                        _this.articleList = response.data;
+                    },
+                    function(response) {
+                        console.log("not ok", response);
+                    }
+                );
+        }();
+    }])
+</script>
+
+</body>
+</html>
