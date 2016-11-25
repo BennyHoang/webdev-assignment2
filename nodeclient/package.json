@@ -1,0 +1,11 @@
+{
+  "name": "nodeclient",
+  "version": "1.0.0",
+  "description": "Nodeclient for appending react-views to WhatsUp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benny Hoang",
+  "license": "ISC"
+}
