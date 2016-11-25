@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<articles>
+  <article>
+    <id>1000</id>
+    <img></img>
+    <title>This is an article</title>
+    <text>text man</text>
+    <datetime>the date</datetime>
+  </article>
+</articles>
