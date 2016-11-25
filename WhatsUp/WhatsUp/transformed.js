@@ -21809,10 +21809,14 @@
 	            "article",
 	            { className: "col col-md-6" },
 	            React.createElement(
+	                "h2",
+	                null,
+	                this.props.id
+	            ),
+	            React.createElement(
 	                "h3",
 	                null,
-	                this.props.id,
-	                "  WHY? but yes?"
+	                this.props.title
 	            )
 	        );
 	    }
@@ -21823,11 +21827,7 @@
 	    render: function () {
 
 	        var articles = this.props.list.map(function (article) {
-	            return React.createElement(
-	                Article,
-	                { title: article.title },
-	                article.title
-	            );
+	            return React.createElement(Article, { title: article.article.title, id: article.article.id });
 	        });
 
 	        return React.createElement(

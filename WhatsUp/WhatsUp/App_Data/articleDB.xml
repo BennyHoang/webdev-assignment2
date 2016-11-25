@@ -28,4 +28,11 @@
     <text>text man</text>
     <datetime>the date</datetime>
   </article>
+  <article>
+    <id>1005</id>
+    <img></img>
+    <title>This is an article</title>
+    <text>text man</text>
+    <datetime>the date</datetime>
+  </article>
 </articles>
