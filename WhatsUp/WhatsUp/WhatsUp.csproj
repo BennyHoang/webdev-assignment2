@@ -115,15 +115,20 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="index_old.html" />
+    <Content Include="admin.html" />
+    <Content Include="lib\angular\angular-route.min.js" />
+    <Content Include="partials\list.html" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\components\app.js" />
+    <Content Include="scripts\components\controllers.js" />
     <Content Include="transformed.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\JournalistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

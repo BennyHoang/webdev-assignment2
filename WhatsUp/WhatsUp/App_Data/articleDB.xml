@@ -3,35 +3,35 @@
   <article>
     <id>1000</id>
     <img></img>
-    <title>This is an article</title>
+    <title>This is an article 1</title>
     <text>text man</text>
     <datetime>the date</datetime>
   </article>
   <article>
     <id>1002</id>
     <img></img>
-    <title>This is an article</title>
+    <title>This is an article 2</title>
     <text>text man</text>
     <datetime>the date</datetime>
   </article>
   <article>
     <id>1003</id>
     <img></img>
-    <title>This is an article</title>
+    <title>This is an article 3</title>
     <text>text man</text>
     <datetime>the date</datetime>
   </article>
   <article>
     <id>1004</id>
     <img></img>
-    <title>This is an article</title>
+    <title>This is an article 4</title>
     <text>text man</text>
     <datetime>the date</datetime>
   </article>
   <article>
     <id>1005</id>
     <img></img>
-    <title>This is an article</title>
+    <title>This is an article 5</title>
     <text>text man</text>
     <datetime>the date</datetime>
   </article>

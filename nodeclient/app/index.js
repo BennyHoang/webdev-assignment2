@@ -17,6 +17,30 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
     _this.id = "";
     _this.title = "";
 
+    _this.getArticleById = function () {
+        var getArticleByIdUrl = "api/Customer/GetArticleById";
+        $http
+            .get(
+                getArticleByIdUrl,
+                {
+                    params: {
+                        id: _this.id
+                    }
+                }
+            )
+            .then(
+                function(response){
+                    var id = response.data.article.id;
+                    var title = response.data.article.title;
+                    _this.id = id;
+                    _this.title = title;
+                },
+                function(response){
+                    console.log("No go", response);
+                }
+            );
+    };
+
 
     var getArticles = function () {
         var getArticlesUrl = "api/Customer/GetAllArticles";
