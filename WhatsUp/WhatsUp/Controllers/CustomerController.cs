@@ -15,8 +15,18 @@ namespace WhatsUp.Controllers
             XElement articlesXML = XElement.Load(GetFilePath());
 
             var articleList = from articles in articlesXML.Descendants("article")
-                           select articles;
+                              select articles;
             return Request.CreateResponse(HttpStatusCode.OK, articleList);
+        }
+
+        public HttpResponseMessage GetArticleById(int? id)
+        {
+            XElement articlesXML = XElement.Load(GetFilePath());
+
+            var selectedArticle = (from article in articlesXML.Descendants("article")
+                                   where (int)article.Element("id") == id
+                                   select article).SingleOrDefault();
+            return Request.CreateResponse(HttpStatusCode.OK, selectedArticle);
         }
 
         private string GetFilePath()
