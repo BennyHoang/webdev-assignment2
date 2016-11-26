@@ -47,9 +47,9 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var App = __webpack_require__(183);
-	var ArticleContent = __webpack_require__(185);
-	var Error = __webpack_require__(186);
-	var angular = __webpack_require__(187);
+	var ArticleContent = __webpack_require__(186);
+	var Error = __webpack_require__(187);
+	var angular = __webpack_require__(188);
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById("app"));
 
@@ -61,7 +61,7 @@
 	    _this.title = "";
 
 	    var getArticles = function () {
-	        var getArticlesUrl = "api/Customer/GetAllArticleSSSSSs";
+	        var getArticlesUrl = "api/Customer/GetAllArticles";
 	        $http.get(getArticlesUrl).then(function (response) {
 	            _this.articleList = response.data;
 	            console.log(_this.articleList);
@@ -21769,13 +21769,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var MainHeader = __webpack_require__(184);
+	var Main = __webpack_require__(184);
 
 	var App = React.createClass({
 	    displayName: "App",
 
 	    render: function () {
-	        return React.createElement(MainHeader, null);
+	        return React.createElement(Main, null);
 	    }
 	});
 
@@ -21786,20 +21786,134 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var MainHeader = __webpack_require__(185);
+
+	var Main = React.createClass({
+	    displayName: "Main",
+
+	    render: function () {
+	        return React.createElement(
+	            "section",
+	            null,
+	            React.createElement(MainHeader, null),
+	            React.createElement("div", { className: "container", id: "articleContainer" })
+	        );
+	    }
+	});
+
+	module.exports = Main;
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
 
 	var MainHeader = React.createClass({
 	    displayName: "MainHeader",
 
 	    render: function () {
 	        return React.createElement(
-	            "section",
-	            null,
+	            "div",
+	            { className: "container" },
 	            React.createElement(
-	                "h2",
-	                null,
-	                "MainHeader"
+	                "div",
+	                { className: "navbar-header" },
+	                React.createElement(
+	                    "button",
+	                    { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" },
+	                    React.createElement(
+	                        "span",
+	                        { className: "sr-only" },
+	                        "Toggle navigation"
+	                    ),
+	                    React.createElement("span", { className: "icon-bar" }),
+	                    React.createElement("span", { className: "icon-bar" }),
+	                    React.createElement("span", { className: "icon-bar" })
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { className: "navbar-brand", href: "/" },
+	                    "HOVEDPROSJEKT"
+	                )
 	            ),
-	            React.createElement("div", { className: "container", id: "articleContainer" })
+	            React.createElement(
+	                "div",
+	                { id: "navbar", className: "navbar-collapse collapse" },
+	                React.createElement(
+	                    "ul",
+	                    { className: "nav navbar-nav navbar-right" },
+	                    React.createElement(
+	                        "li",
+	                        { className: "dropdown" },
+	                        React.createElement(
+	                            "a",
+	                            { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false" },
+	                            "Nyheter ",
+	                            React.createElement("span", { className: "caret" })
+	                        ),
+	                        React.createElement(
+	                            "ul",
+	                            { className: "dropdown-menu" },
+	                            React.createElement(
+	                                "li",
+	                                null,
+	                                React.createElement(
+	                                    "a",
+	                                    { href: "/news/5" },
+	                                    "INSTALLASJON & BEDRIFT BRIEF"
+	                                )
+	                            ),
+	                            React.createElement(
+	                                "li",
+	                                null,
+	                                React.createElement(
+	                                    "a",
+	                                    { href: "/news/4" },
+	                                    "SPEED DATE"
+	                                )
+	                            ),
+	                            React.createElement(
+	                                "li",
+	                                null,
+	                                React.createElement(
+	                                    "a",
+	                                    { href: "/news/3" },
+	                                    "FORBREDELSER TIL HOVEDPROSJEKTET"
+	                                )
+	                            ),
+	                            React.createElement("li", { role: "separator", className: "divider" }),
+	                            React.createElement(
+	                                "li",
+	                                null,
+	                                React.createElement(
+	                                    "a",
+	                                    { href: "/news" },
+	                                    "se alle nyheter"
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    React.createElement(
+	                        "li",
+	                        null,
+	                        React.createElement(
+	                            "a",
+	                            { href: "/group_members" },
+	                            "Teamet"
+	                        )
+	                    ),
+	                    React.createElement(
+	                        "li",
+	                        null,
+	                        React.createElement(
+	                            "a",
+	                            { href: "/contact" },
+	                            "Kontakt oss"
+	                        )
+	                    )
+	                )
+	            )
 	        );
 	    }
 	});
@@ -21807,7 +21921,7 @@
 	module.exports = MainHeader;
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -21851,7 +21965,7 @@
 	module.exports = ArticleContent;
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -21871,15 +21985,15 @@
 	module.exports = Error;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(188);
+	__webpack_require__(189);
 	module.exports = angular;
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports) {
 
 	/**

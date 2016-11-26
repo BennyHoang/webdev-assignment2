@@ -1,10 +1,10 @@
 var React = require("react");
-var MainHeader = require("./MainHeader");
+var Main = require("./Main");
 
 var App = React.createClass({
     render:function(){
         return(
-            <MainHeader/>
+            <Main/>
         );
     }
 });

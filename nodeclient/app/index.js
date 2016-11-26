@@ -19,7 +19,7 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
 
 
     var getArticles = function () {
-        var getArticlesUrl = "api/Customer/GetAllArticleSSSSSs";
+        var getArticlesUrl = "api/Customer/GetAllArticles";
         $http
             .get(getArticlesUrl)
             .then(
