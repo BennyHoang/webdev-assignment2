@@ -1,4 +1,4 @@
-﻿<div class="container"  ng-controller="ArticleController as articleCtrl">
+﻿<div class="container" ng-controller="ArticleController as articleCtrl">
     <section class="row">
         <table class="table table-hover">
             <thead>
@@ -9,8 +9,13 @@
             </thead>
             <tbody>
                 <tr ng-repeat="articleObject in articleCtrl.articleList">
+
                     <td>{{articleObject.article.id}}</td>
                     <td>{{articleObject.article.title}}</td>
+                    <td>
+                        <a class="btn btn-primary" ng-href="#/details/{{articleObject.article.id}}">Edit</a>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
