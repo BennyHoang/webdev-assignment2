@@ -2,10 +2,11 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var App = require("./components/App");
 var ArticleContent = require("./components/ArticleContent");
+var Error = require("./components/Error");
 var angular = require("angular");
 
 ReactDOM.render(
-    <App/>,
+    <App />,
     document.getElementById("app")
 );
 
@@ -18,7 +19,7 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
 
 
     var getArticles = function () {
-        var getArticlesUrl = "api/Customer/GetAllArticles";
+        var getArticlesUrl = "api/Customer/GetAllArticleSSSSSs";
         $http
             .get(getArticlesUrl)
             .then(
@@ -32,6 +33,10 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
             },
             function (response) {
                 console.log("not ok", response);
+                ReactDOM.render(
+                    <Error />,
+                    document.getElementById("articleContainer")
+                );
             }
             );
     } ();

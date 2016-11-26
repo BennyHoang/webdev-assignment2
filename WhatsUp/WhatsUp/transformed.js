@@ -48,7 +48,8 @@
 	var ReactDOM = __webpack_require__(32);
 	var App = __webpack_require__(183);
 	var ArticleContent = __webpack_require__(185);
-	var angular = __webpack_require__(186);
+	var Error = __webpack_require__(186);
+	var angular = __webpack_require__(187);
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById("app"));
 
@@ -60,13 +61,14 @@
 	    _this.title = "";
 
 	    var getArticles = function () {
-	        var getArticlesUrl = "api/Customer/GetAllArticles";
+	        var getArticlesUrl = "api/Customer/GetAllArticleSSSSSs";
 	        $http.get(getArticlesUrl).then(function (response) {
 	            _this.articleList = response.data;
 	            console.log(_this.articleList);
 	            ReactDOM.render(React.createElement(ArticleContent, { list: _this.articleList }), document.getElementById("articleContainer"));
 	        }, function (response) {
 	            console.log("not ok", response);
+	            ReactDOM.render(React.createElement(Error, null), document.getElementById("articleContainer"));
 	        });
 	    }();
 	}]);
@@ -21852,12 +21854,32 @@
 /* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(187);
+	var React = __webpack_require__(1);
+
+	var Error = React.createClass({
+	    displayName: "Error",
+
+	    render: function () {
+	        return React.createElement(
+	            "h2",
+	            null,
+	            "This is not working man"
+	        );
+	    }
+	});
+
+	module.exports = Error;
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(188);
 	module.exports = angular;
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports) {
 
 	/**
