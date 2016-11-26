@@ -1,52 +1,16 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var App = require("./components/App");
+var ArticleContent = require("./components/ArticleContent");
 var angular = require("angular");
-/*
-var halloweenJSON = {
-            "halloweenCostumes": [
-                {
-                    "title": "Cowboy",
-                    "description": "Cowboy costume with horse",
-                },
-                {
-                    "title": "Ketchup",
-                    "description": "Dress up as a ketchup bottle",
-                },
-                {
-                    "title": "Toddler Yoda",
-                    "description": "Let Your Baby be Yoda",
-                }
-            ]
-        };
 
-        ReactDOM.render(
-            <App list={halloweenJSON.halloweenCostumes}></App>,
-            document.getElementById("app")
-        )
-*/
-
-
-var halloweenJSON = {
-    "halloweenCostumes": [
-        {
-            "title": "Cowboy",
-            "description": "Cowboy costume with horse",
-        },
-        {
-            "title": "Ketchup",
-            "description": "Dress up as a ketchup bottle",
-        },
-        {
-            "title": "Toddler Yoda",
-            "description": "Let Your Baby be Yoda",
-        }
-    ]
-};
-
-
+ReactDOM.render(
+    <App/>,
+    document.getElementById("app")
+);
 
 var articleApp = angular.module("articleApp", []);
+
 articleApp.controller("ArticleController", ["$http", function ($http) {
     var _this = this;
     _this.id = "";
@@ -62,8 +26,8 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
                 _this.articleList = response.data;
                 console.log(_this.articleList);
                 ReactDOM.render(
-                    <App list={_this.articleList} />,
-                    document.getElementById("app")
+                    <ArticleContent list={_this.articleList} />,
+                    document.getElementById("articleContainer")
                 );
             },
             function (response) {

@@ -47,45 +47,13 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var App = __webpack_require__(183);
-	var angular = __webpack_require__(184);
-	/*
-	var halloweenJSON = {
-	            "halloweenCostumes": [
-	                {
-	                    "title": "Cowboy",
-	                    "description": "Cowboy costume with horse",
-	                },
-	                {
-	                    "title": "Ketchup",
-	                    "description": "Dress up as a ketchup bottle",
-	                },
-	                {
-	                    "title": "Toddler Yoda",
-	                    "description": "Let Your Baby be Yoda",
-	                }
-	            ]
-	        };
+	var ArticleContent = __webpack_require__(185);
+	var angular = __webpack_require__(186);
 
-	        ReactDOM.render(
-	            <App list={halloweenJSON.halloweenCostumes}></App>,
-	            document.getElementById("app")
-	        )
-	*/
-
-	var halloweenJSON = {
-	    "halloweenCostumes": [{
-	        "title": "Cowboy",
-	        "description": "Cowboy costume with horse"
-	    }, {
-	        "title": "Ketchup",
-	        "description": "Dress up as a ketchup bottle"
-	    }, {
-	        "title": "Toddler Yoda",
-	        "description": "Let Your Baby be Yoda"
-	    }]
-	};
+	ReactDOM.render(React.createElement(App, null), document.getElementById("app"));
 
 	var articleApp = angular.module("articleApp", []);
+
 	articleApp.controller("ArticleController", ["$http", function ($http) {
 	    var _this = this;
 	    _this.id = "";
@@ -96,7 +64,7 @@
 	        $http.get(getArticlesUrl).then(function (response) {
 	            _this.articleList = response.data;
 	            console.log(_this.articleList);
-	            ReactDOM.render(React.createElement(App, { list: _this.articleList }), document.getElementById("app"));
+	            ReactDOM.render(React.createElement(ArticleContent, { list: _this.articleList }), document.getElementById("articleContainer"));
 	        }, function (response) {
 	            console.log("not ok", response);
 	        });
@@ -21799,8 +21767,48 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var Angular = __webpack_require__(184);
-	var MainHeader = __webpack_require__(186);
+	var MainHeader = __webpack_require__(184);
+
+	var App = React.createClass({
+	    displayName: "App",
+
+	    render: function () {
+	        return React.createElement(MainHeader, null);
+	    }
+	});
+
+	module.exports = App;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var MainHeader = React.createClass({
+	    displayName: "MainHeader",
+
+	    render: function () {
+	        return React.createElement(
+	            "section",
+	            null,
+	            React.createElement(
+	                "h2",
+	                null,
+	                "MainHeader"
+	            ),
+	            React.createElement("div", { className: "container", id: "articleContainer" })
+	        );
+	    }
+	});
+
+	module.exports = MainHeader;
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
 	var Article = React.createClass({
 	    displayName: "Article",
 
@@ -21821,8 +21829,8 @@
 	        );
 	    }
 	});
-	var App = React.createClass({
-	    displayName: "App",
+	var ArticleContent = React.createClass({
+	    displayName: "ArticleContent",
 
 	    render: function () {
 
@@ -21831,29 +21839,25 @@
 	        });
 
 	        return React.createElement(
-	            "div",
-	            { className: "container" },
-	            React.createElement(
-	                "section",
-	                { className: "row" },
-	                articles
-	            )
+	            "section",
+	            { className: "row" },
+	            articles
 	        );
 	    }
 	});
 
-	module.exports = App;
+	module.exports = ArticleContent;
 
 /***/ },
-/* 184 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(185);
+	__webpack_require__(187);
 	module.exports = angular;
 
 
 /***/ },
-/* 185 */
+/* 187 */
 /***/ function(module, exports) {
 
 	/**
@@ -54240,56 +54244,6 @@
 	})(window);
 
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-
-/***/ },
-/* 186 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var Angular = __webpack_require__(184);
-
-	var Article = React.createClass({
-	    displayName: "Article",
-
-	    render: function () {
-	        return React.createElement(
-	            "article",
-	            { className: "col col-md-6" },
-	            React.createElement(
-	                "h3",
-	                null,
-	                this.props.title
-	            )
-	        );
-	    }
-	});
-
-	var MainHeader = React.createClass({
-	    displayName: "MainHeader",
-
-
-	    render: function () {
-	        var articles = this.props.list.map(function (article) {
-	            return React.createElement(
-	                Article,
-	                { title: article.title },
-	                article.title
-	            );
-	        });
-
-	        return React.createElement(
-	            "div",
-	            { className: "container" },
-	            React.createElement(
-	                "section",
-	                { className: "row" },
-	                articles
-	            )
-	        );
-	    }
-	});
-
-	module.exports = MainHeader;
 
 /***/ }
 /******/ ]);
