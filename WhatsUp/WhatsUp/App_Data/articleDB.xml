@@ -42,4 +42,9 @@
     <title>another image post</title>
     <img>C:\Users\Benny\Source\Repos\webdev-assignment2\WhatsUp\WhatsUp\Images\1.png</img>
   </article>
+  <article>
+    <id>100023</id>
+    <title>another article with img but is working</title>
+    <img>Images\1.png</img>
+  </article>
 </articles>

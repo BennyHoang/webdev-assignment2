@@ -8,7 +8,6 @@ var Main = React.createClass({
         return (
             <section>
                 <MainHeader/>
-                <SearchArticle/>
                 <div className="container" id="articleContainer"></div>
             </section>
          

@@ -21813,7 +21813,6 @@
 	            "section",
 	            null,
 	            React.createElement(MainHeader, null),
-	            React.createElement(SearchArticle, null),
 	            React.createElement("div", { className: "container", id: "articleContainer" })
 	        );
 	    }
@@ -21980,7 +21979,8 @@
 	                "h3",
 	                null,
 	                this.props.title
-	            )
+	            ),
+	            React.createElement("img", { src: this.props.img, alt: this.props.title })
 	        );
 	    }
 	});
@@ -21990,7 +21990,7 @@
 	    render: function () {
 
 	        var articles = this.props.list.map(function (article) {
-	            return React.createElement(Article, { title: article.article.title, id: article.article.id });
+	            return React.createElement(Article, { title: article.article.title, id: article.article.id, img: article.article.img });
 	        });
 
 	        return React.createElement(

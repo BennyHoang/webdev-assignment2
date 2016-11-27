@@ -47,9 +47,14 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
                 }
             )
             .then(
-                function(response) {
-                    imgUrl = response.data;
-                    console.log(imgUrl);  
+                function (response) {
+                    //HAcking so image filepath is working 
+                    var url = response.data;
+                    var splitUrl = url.split('\\').pop(-1);
+                    imgUrl = "Images\\" + splitUrl;
+
+                    console.log(imgUrl);
+                    
                 },
                 function(response) {
                     console.log(response);

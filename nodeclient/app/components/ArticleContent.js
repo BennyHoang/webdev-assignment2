@@ -5,6 +5,7 @@ var Article = React.createClass({
             <article className="col col-md-6">
                 <h2>{this.props.id}</h2>
                 <h3>{this.props.title}</h3>
+                <img src={this.props.img} alt={this.props.title}/>
             </article>
         );
     }
@@ -14,7 +15,7 @@ var ArticleContent = React.createClass({
 
         var articles = this.props.list.map(function (article) {
             return (
-                <Article title={article.article.title} id={article.article.id}></Article>
+                <Article title={article.article.title} id={article.article.id} img={article.article.img}></Article>
             )
         });
 
