@@ -114,6 +114,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Images\1.png" />
     <Content Include="index.html" />
     <Content Include="admin.html" />
     <Content Include="lib\angular\angular-route.min.js" />

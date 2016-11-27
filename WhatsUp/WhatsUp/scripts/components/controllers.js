@@ -17,10 +17,45 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         );
 }
 ]);
-journalistControllers.controller("PostArticleController", ["$http", "$location", function ($http, $location) {
+journalistControllers.controller("PostArticleController", ["$http", "$location", "$scope", function ($http, $location, $scope) {
     var _this = this;
+    var imgUrl = "";
     _this.id = "";
     _this.title = "";
+
+    _this.imageToUpload = {};
+
+    $scope.setImageToUpload = function(files) {
+        _this.imageToUpload = files[0];
+    }
+
+    _this.uploadImage = function() {
+        var uploadImageUrl = "api/Journalist/UploadImage";
+        var formData = new FormData();
+        formData.append("file", _this.imageToUpload);
+
+        $http
+            .post(
+                uploadImageUrl,
+                formData,
+                {
+                    withCredentials: true,
+                    headers: {
+                        "Content-Type": undefined
+                    },
+                    transformRequest: angular.identity
+                }
+            )
+            .then(
+                function(response) {
+                    imgUrl = response.data;
+                    console.log(imgUrl);  
+                },
+                function(response) {
+                    console.log(response);
+                }
+            );
+    };
 
     _this.postArticle = function () {
         var postArticleUrl = "api/Journalist/PostArticle";
@@ -31,7 +66,8 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
                 JSON.stringify(
                     {
                         id: _this.id,
-                        title: _this.title
+                        title: _this.title,
+                        img: imgUrl
                     }
                 ),
                 {

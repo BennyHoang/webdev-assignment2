@@ -7,8 +7,12 @@
         </div>
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" ng-model="postArticleCtrl.title" />
+            <input type="text" class="form-control" ng-model="postArticleCtrl.title"/>
         </div>
+        <form ng-submit="postArticleCtrl.uploadImage()">
+            <input type="file" onchange="angular.element(this).scope().setImageToUpload(this.files)"/>
+            <input type="submit" value="upload image"/>
+        </form>
         <input type="button" ng-click="postArticleCtrl.postArticle()" class="btn btn-primary" value="Post" />
 
     </section>

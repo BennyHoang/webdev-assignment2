@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <articles>
   <article>
-    <id>1002</id>
-    <img></img>
-    <title>This is an article 22</title>
-    <text>text man</text>
-    <datetime>the date</datetime>
-  </article>
-  <article>
     <id>1003</id>
     <img></img>
     <title>This is an article 3</title>
@@ -37,7 +30,16 @@
     <title>yes man</title>
   </article>
   <article>
-    <id>0</id>
-    <title>wuhauwhuawhauwh</title>
+    <id>1002</id>
+    <title>New title</title>
+  </article>
+  <article>
+    <id>1000023</id>
+    <title>Post with picture</title>
+  </article>
+  <article>
+    <id>20321</id>
+    <title>another image post</title>
+    <img>C:\Users\Benny\Source\Repos\webdev-assignment2\WhatsUp\WhatsUp\Images\1.png</img>
   </article>
 </articles>

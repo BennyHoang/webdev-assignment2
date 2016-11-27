@@ -11,6 +11,22 @@ namespace WhatsUp.Controllers
 {
     public class JournalistController : ApiController
     {
+        public HttpResponseMessage UploadImage()
+        {
+            String fileName = null;
+            if (System.Web.HttpContext.Current.Request.Files != null)
+            {
+                var file = System.Web.HttpContext.Current.Request.Files[0];
+                fileName = file.FileName;
+                file.SaveAs(GetImageFilePath(fileName));
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, GetImageFilePath(fileName));
+        }
+
+        private String GetImageFilePath(String filename)
+        {
+            return System.Web.Hosting.HostingEnvironment.MapPath(@"~/Images/" + filename);
+        }
         public HttpResponseMessage PostArticle(Article _article)
         {
             XElement articleXML = XElement.Load(GetDBFilePath());
@@ -18,7 +34,8 @@ namespace WhatsUp.Controllers
             articleXML.Add(
                     new XElement("article",
                         new XElement("id", _article.Id),
-                        new XElement("title", _article.Title)
+                        new XElement("title", _article.Title),
+                        new XElement("img", _article.Img )
                     )
                 );
             articleXML.Save(GetDBFilePath());
