@@ -5,11 +5,25 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Xml.Linq;
+using WhatsUp.Models;
 
 namespace WhatsUp.Controllers
 {
     public class JournalistController : ApiController
     {
+        public HttpResponseMessage PutArticle(Article _article)
+        {
+            XElement articleXML = XElement.Load(GetDBFilePath());
+
+            var selectedArticle = (from article in articleXML.Descendants("article")
+                                   where (int)article.Element("id") == _article.Id
+                                   select article).SingleOrDefault();
+
+            selectedArticle.SetElementValue("title", _article.Title);
+            articleXML.Save(GetDBFilePath());
+
+            return Request.CreateResponse(HttpStatusCode.OK, selectedArticle);
+        }
         public HttpResponseMessage GetAllArticles()
         {
             XElement articlesXML = XElement.Load(GetDBFilePath());
@@ -17,6 +31,15 @@ namespace WhatsUp.Controllers
             var articleList = from articles in articlesXML.Descendants("article")
                               select articles;
             return Request.CreateResponse(HttpStatusCode.OK, articleList);
+        }
+        public HttpResponseMessage GetArticleById(int? id)
+        {
+            XElement articlesXML = XElement.Load(GetDBFilePath());
+
+            var selectedArticle = (from article in articlesXML.Descendants("article")
+                                   where (int)article.Element("id") == id
+                                   select article).SingleOrDefault();
+            return Request.CreateResponse(HttpStatusCode.OK, selectedArticle);
         }
 
         private string GetDBFilePath()

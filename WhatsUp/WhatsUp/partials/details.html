@@ -1,1 +1,12 @@
-﻿<h2>details view</h2>
+﻿<div class="container" ng-controller="EditArticleController as editArticleCtrl">
+    <section class="row">
+
+        <h2>Article ID: {{editArticleCtrl.id}}</h2>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" ng-model="editArticleCtrl.title" />
+        </div>
+        <input type="button" ng-click="editArticleCtrl.putArticle()" class="btn btn-primary" value="update" />
+
+    </section>
+</div>

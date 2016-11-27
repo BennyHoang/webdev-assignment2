@@ -17,6 +17,61 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         );
 }
 ]);
-journalistControllers.controller("EditArticleController", ["$http", "$routeParams", function($http, $routeParams) {
-    
+journalistControllers.controller("EditArticleController", ["$http", "$routeParams", function ($http, $routeParams) {
+    var _this = this;
+    _this.id = $routeParams.id;
+    _this.title = "";
+
+
+    _this.getArticle = function () {
+        var getArticleByIdUrl = "api/Journalist/GetArticleById/" + _this.id;
+        $http
+            .get(
+                getArticleByIdUrl,
+                {
+                    params: {
+                        id: _this.id
+                    }
+                }
+            )
+            .then(
+                function (response) {
+                    var id = response.data.article.id;
+                    var title = response.data.article.title;
+                    _this.id = id;
+                    _this.title = title;
+
+                },
+                function (response) {
+                    console.log("not working man", response);
+                }
+            );
+    }();
+    _this.putArticle = function() {
+        var updateArticleUrl = "api/Journalist/PutArticle";
+
+        $http
+            .put(
+                updateArticleUrl,
+                JSON.stringify(
+                    {
+                        id: _this.id,
+                        title: _this.title
+                    }
+                ),
+                {
+                    headers: { "Content-Type": "application/json" }
+                }
+            )
+            .then(
+                function(response) {
+                    var title = response.data.article.title;
+                    _this.title = title;
+                },
+                function(response) {
+                    console.log("not working ", response);
+                }
+            );
+    };
+
 }]);

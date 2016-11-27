@@ -9,7 +9,7 @@ journalistApp.config(["$routeProvider", function ($routeProvider) {
             templateUrl: "partials/list.html",
             controller: "ArticleController"
         })
-        .when("/details", {
+        .when("/details/:id", {
             templateUrl: "partials/details.html",
             controller: "EditArticleController"
         })
