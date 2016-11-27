@@ -18,7 +18,15 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
 }
 ]);
 journalistControllers.controller("PostArticleController", ["$http", function($http) {
-        
+        var _this = this;
+        _this.id = "";
+        _this.title = "";
+
+        _this.postArticle = function() {
+
+
+        };
+
     }
 ]);
 journalistControllers.controller("EditArticleController", ["$http", "$routeParams", function ($http, $routeParams) {

@@ -11,6 +11,19 @@ namespace WhatsUp.Controllers
 {
     public class JournalistController : ApiController
     {
+        public HttpResponseMessage PostArticle(Article _article)
+        {
+            XElement articleXML = XElement.Load(GetDBFilePath());
+
+            articleXML.Add(
+                    new XElement("article",
+                        new XElement("id", _article.Id),
+                        new XElement("title", _article.Title)
+                    )
+                );
+            articleXML.Save(GetDBFilePath());
+            return Request.CreateResponse(HttpStatusCode.Created, _article);
+        }
         public HttpResponseMessage DeleteArticle(int id)
         {
             XElement articleXML = XElement.Load(GetDBFilePath());
