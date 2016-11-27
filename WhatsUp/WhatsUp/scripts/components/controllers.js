@@ -17,19 +17,39 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         );
 }
 ]);
-journalistControllers.controller("PostArticleController", ["$http", function($http) {
-        var _this = this;
-        _this.id = "";
-        _this.title = "";
+journalistControllers.controller("PostArticleController", ["$http", "$location", function ($http, $location) {
+    var _this = this;
+    _this.id = "";
+    _this.title = "";
 
-        _this.postArticle = function() {
+    _this.postArticle = function () {
+        var postArticleUrl = "api/Journalist/PostArticle";
 
-
-        };
-
-    }
-]);
-journalistControllers.controller("EditArticleController", ["$http", "$routeParams", function ($http, $routeParams) {
+        $http
+            .post(
+                postArticleUrl,
+                JSON.stringify(
+                    {
+                        id: _this.id,
+                        title: _this.title
+                    }
+                ),
+                {
+                    headers: { "Content-Type": "application/json" }
+                }
+            )
+            .then(
+                function(response) {
+                    alert("Article Posted " + response);
+                    $location.path("/list");
+                },
+                function(response) {
+                    console.log(response);
+                }
+            );
+    };
+}]);
+journalistControllers.controller("EditArticleController", ["$http", "$routeParams", "$location", function ($http, $routeParams, $location) {
     var _this = this;
     _this.id = $routeParams.id;
     _this.title = "";
@@ -59,7 +79,7 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                 }
             );
     }();
-    _this.putArticle = function() {
+    _this.putArticle = function () {
         var updateArticleUrl = "api/Journalist/PutArticle";
 
         $http
@@ -76,16 +96,16 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                 }
             )
             .then(
-                function(response) {
-                    var title = response.data.article.title;
-                    _this.title = title;
+                function (response) {
+                    alert("Article updated");
+                    $location.path("/list");
                 },
-                function(response) {
+                function (response) {
                     console.log("not working ", response);
                 }
             );
     };
-    _this.deleteArticle = function() {
+    _this.deleteArticle = function () {
         var deleteArticleUrl = "api/Journalist/DeleteArticle";
         $http
             .delete(
@@ -98,11 +118,10 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
             )
             .then(
                 function (response) {
-                    /*var title = response.data.article.title;
-                    _this.title = title;*/
                     alert("deleted");
+                    $location.path("/list");
                 },
-                function(response) {
+                function (response) {
                     console.log(response);
                 }
             );
