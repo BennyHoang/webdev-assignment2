@@ -17,6 +17,10 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         );
 }
 ]);
+journalistControllers.controller("PostArticleController", ["$http", function($http) {
+        
+    }
+]);
 journalistControllers.controller("EditArticleController", ["$http", "$routeParams", function ($http, $routeParams) {
     var _this = this;
     _this.id = $routeParams.id;
@@ -70,6 +74,28 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                 },
                 function(response) {
                     console.log("not working ", response);
+                }
+            );
+    };
+    _this.deleteArticle = function() {
+        var deleteArticleUrl = "api/Journalist/DeleteArticle";
+        $http
+            .delete(
+                deleteArticleUrl,
+                {
+                    params: {
+                        id: _this.id
+                    }
+                }
+            )
+            .then(
+                function (response) {
+                    /*var title = response.data.article.title;
+                    _this.title = title;*/
+                    alert("deleted");
+                },
+                function(response) {
+                    console.log(response);
                 }
             );
     };

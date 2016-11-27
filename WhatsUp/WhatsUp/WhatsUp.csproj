@@ -119,6 +119,7 @@
     <Content Include="lib\angular\angular-route.min.js" />
     <Content Include="partials\details.html" />
     <Content Include="partials\list.html" />
+    <Content Include="partials\post.html" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\components\app.js" />

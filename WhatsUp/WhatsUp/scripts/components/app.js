@@ -13,6 +13,10 @@ journalistApp.config(["$routeProvider", function ($routeProvider) {
             templateUrl: "partials/details.html",
             controller: "EditArticleController"
         })
+        .when("/post", {
+            templateUrl: "partials/post.html",
+            controller: "PostArticleController"
+        })
         .otherwise({
             redirectTo: "/list"
         });
