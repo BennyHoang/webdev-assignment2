@@ -1,4 +1,5 @@
 ﻿var journalistControllers = angular.module("journalistControllers", []);
+var lastID = "";
 
 journalistControllers.controller("ArticleController", ["$http", function ($http) {
     var _this = this;
@@ -10,6 +11,10 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         .then(
             function (response) {
                 _this.articleList = response.data;
+                var last = _this.articleList[_this.articleList.length - 1];
+                lastID = last.article.id;
+                lastID++;
+                //console.log(lastID);
             },
             function (response) {
                 console.log("not ok", response);
@@ -20,7 +25,7 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
 journalistControllers.controller("PostArticleController", ["$http", "$location", "$scope", function ($http, $location, $scope) {
     var _this = this;
     var imgUrl = "";
-    _this.id = "";
+    _this.id = lastID;
     _this.title = "";
 
     $scope.imageToUpload = {};

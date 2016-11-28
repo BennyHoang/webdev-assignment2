@@ -1,61 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <articles>
   <article>
-    <id>1003</id>
-    <img></img>
-    <title>This is an article 3</title>
-    <text>text man</text>
-    <datetime>the date</datetime>
-  </article>
-  <article>
-    <id>1004</id>
-    <img></img>
-    <title>This is an article 4</title>
-    <text>text man</text>
-    <datetime>the date</datetime>
-  </article>
-  <article>
-    <id>1005</id>
-    <img></img>
-    <title>This is an article 5</title>
-    <text>text man</text>
-    <datetime>the date</datetime>
-  </article>
-  <article>
-    <id>20303</id>
-    <title>yesss</title>
-  </article>
-  <article>
-    <id>12312312</id>
-    <title>yes man</title>
-  </article>
-  <article>
     <id>1002</id>
+    <title>New title ya?</title>
+    <img>Images/1.png</img>
+    <dateTime>2016-11-28T12:51:40.6450874+01:00</dateTime>
+  </article>
+  <article>
+    <id>10023</id>
+    <title>rlitjaelieja</title>
+    <img>Images/1.png</img>
+    <dateTime>2016-11-28T12:59:09.154301+01:00</dateTime>
+  </article>
+  <article>
+    <id>10024</id>
     <title>New title</title>
-  </article>
-  <article>
-    <id>1000023</id>
-    <title>Post with picture</title>
-  </article>
-  <article>
-    <id>20321</id>
-    <title>another image post</title>
-    <img>C:\Users\Benny\Source\Repos\webdev-assignment2\WhatsUp\WhatsUp\Images\1.png</img>
-  </article>
-  <article>
-    <id>100023</id>
-    <title>another article with img but is working</title>
-    <img>Images\1.png</img>
-  </article>
-  <article>
-    <id>2030</id>
-    <title>new title with post man</title>
-    <img>Images\1.png</img>
-  </article>
-  <article>
-    <id>210938</id>
-    <title>new pichaarr</title>
     <img></img>
-    <dateTime>2016-11-28T12:31:06.7734699+01:00</dateTime>
+    <dateTime>2016-11-28T13:11:08.5701762+01:00</dateTime>
   </article>
 </articles>

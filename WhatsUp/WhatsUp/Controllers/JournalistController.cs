@@ -11,6 +11,7 @@ namespace WhatsUp.Controllers
 {
     public class JournalistController : ApiController
     {
+        DateTime localDate = DateTime.Now;
         public HttpResponseMessage UploadImage()
         {
             String fileName = null;
@@ -30,7 +31,7 @@ namespace WhatsUp.Controllers
         public HttpResponseMessage PostArticle(Article _article)
         {
             XElement articleXML = XElement.Load(GetDBFilePath());
-            DateTime localDate = DateTime.Now;
+            
             
             articleXML.Add(
                     new XElement("article",
@@ -62,6 +63,7 @@ namespace WhatsUp.Controllers
                                    select article).SingleOrDefault();
 
             selectedArticle.SetElementValue("title", _article.Title);
+            selectedArticle.SetElementValue("dateTime", localDate);
             articleXML.Save(GetDBFilePath());
 
             return Request.CreateResponse(HttpStatusCode.OK, selectedArticle);
