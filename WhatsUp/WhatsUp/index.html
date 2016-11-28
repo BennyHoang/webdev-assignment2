@@ -8,6 +8,9 @@
 </head>
 
 <body ng-controller="ArticleController as articleCtrl">
+    <input type="text" ng-model="articleCtrl.id" />
+        <input ng-click="articleCtrl.getArticleById()" type="button" value="Hent" />
+        <p>{{articleCtrl.title}}</p>
     <div id="app">
 
         <!--

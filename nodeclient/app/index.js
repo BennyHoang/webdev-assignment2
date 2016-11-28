@@ -3,19 +3,25 @@ var ReactDOM = require("react-dom");
 var App = require("./components/App");
 var ArticleContent = require("./components/ArticleContent");
 var Error = require("./components/Error");
+var SearchArticle = require("./components/SearchArticle");
+
 var angular = require("angular");
 
-ReactDOM.render(
-    <App />,
-    document.getElementById("app")
-);
-
 var articleApp = angular.module("articleApp", []);
+   
+    ReactDOM.render(
+        <App/>,
+        document.getElementById("app")
+    );
 
 articleApp.controller("ArticleController", ["$http", function ($http) {
     var _this = this;
     _this.id = "";
     _this.title = "";
+
+    _this.sayHello = function(){
+        alert(_this.id);
+    };
 
     _this.getArticleById = function () {
         var getArticleByIdUrl = "api/Customer/GetArticleById";
@@ -41,7 +47,10 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
             );
     };
 
-
+    ReactDOM.render(
+        <SearchArticle onClick={_this.getArticleById} text={_this.id}/>,
+        document.getElementById("searchArticleContainer")
+    );
     var getArticles = function () {
         var getArticlesUrl = "api/Customer/GetAllArticles";
         $http

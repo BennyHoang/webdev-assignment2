@@ -47,18 +47,24 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var App = __webpack_require__(183);
-	var ArticleContent = __webpack_require__(187);
-	var Error = __webpack_require__(188);
+	var ArticleContent = __webpack_require__(186);
+	var Error = __webpack_require__(187);
+	var SearchArticle = __webpack_require__(188);
+
 	var angular = __webpack_require__(189);
 
-	ReactDOM.render(React.createElement(App, null), document.getElementById("app"));
-
 	var articleApp = angular.module("articleApp", []);
+
+	ReactDOM.render(React.createElement(App, null), document.getElementById("app"));
 
 	articleApp.controller("ArticleController", ["$http", function ($http) {
 	    var _this = this;
 	    _this.id = "";
 	    _this.title = "";
+
+	    _this.sayHello = function () {
+	        alert(_this.id);
+	    };
 
 	    _this.getArticleById = function () {
 	        var getArticleByIdUrl = "api/Customer/GetArticleById";
@@ -76,6 +82,7 @@
 	        });
 	    };
 
+	    ReactDOM.render(React.createElement(SearchArticle, { onClick: _this.getArticleById, text: _this.id }), document.getElementById("searchArticleContainer"));
 	    var getArticles = function () {
 	        var getArticlesUrl = "api/Customer/GetAllArticles";
 	        $http.get(getArticlesUrl).then(function (response) {
@@ -21803,7 +21810,6 @@
 
 	var React = __webpack_require__(1);
 	var MainHeader = __webpack_require__(185);
-	var SearchArticle = __webpack_require__(186);
 
 	var Main = React.createClass({
 	    displayName: "Main",
@@ -21813,6 +21819,7 @@
 	            "section",
 	            null,
 	            React.createElement(MainHeader, null),
+	            React.createElement("div", { className: "container", id: "searchArticleContainer" }),
 	            React.createElement("div", { className: "container", id: "articleContainer" })
 	        );
 	    }
@@ -21942,27 +21949,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-
-	var SearchArticle = React.createClass({
-	    displayName: "SearchArticle",
-
-	    render: function () {
-	        return React.createElement(
-	            "div",
-	            null,
-	            React.createElement("input", { type: "text", "ng-model": "articleCtrl.id" }),
-	            React.createElement("input", { onclick: articleCtrl.getArticleById(), type: "button", defaultValue: "Hent" })
-	        );
-	    }
-	});
-
-	module.exports = SearchArticle;
-
-/***/ },
-/* 187 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
 	var Article = React.createClass({
 	    displayName: "Article",
 
@@ -22004,7 +21990,7 @@
 	module.exports = ArticleContent;
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -22022,6 +22008,44 @@
 	});
 
 	module.exports = Error;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var SearchArticle = React.createClass({
+	    displayName: "SearchArticle",
+
+	    getInitialState: function () {
+	        alert(this.props.id);
+	        return { input: this.props.id };
+	    },
+	    handleChange: function (e) {
+	        this.setState({ input: e.target.value });
+	    },
+	    handleClick: function () {
+	        var state = this.state.input;
+	        var props = this.props.id;
+	        console.log("props: " + props + " state: " + state);
+	        props = state;
+	        console.log("merged: " + props);
+	        console.log("raw merged: " + this.props.id);
+	        this.props.onClick();
+	    },
+	    render: function () {
+
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement("input", { type: "text", onChange: this.handleChange.bind(this) }),
+	            React.createElement("input", { onClick: this.handleClick, type: "button", defaultValue: "Hent" })
+	        );
+	    }
+	});
+
+	module.exports = SearchArticle;
 
 /***/ },
 /* 189 */

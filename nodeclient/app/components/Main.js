@@ -1,6 +1,5 @@
 var React = require("react");
 var MainHeader = require("./MainHeader");
-var SearchArticle = require("./SearchArticle");
 
 
 var Main = React.createClass({
@@ -8,6 +7,7 @@ var Main = React.createClass({
         return (
             <section>
                 <MainHeader/>
+                <div className="container" id="searchArticleContainer"></div>
                 <div className="container" id="articleContainer"></div>
             </section>
          

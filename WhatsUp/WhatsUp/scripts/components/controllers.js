@@ -1,6 +1,7 @@
 ﻿var journalistControllers = angular.module("journalistControllers", []);
 var lastID = "";
 
+//Controller for list.html view
 journalistControllers.controller("ArticleController", ["$http", function ($http) {
     var _this = this;
     _this.id = "";
@@ -22,6 +23,7 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
         );
 }
 ]);
+//Controller for post.html view
 journalistControllers.controller("PostArticleController", ["$http", "$location", "$scope", function ($http, $location, $scope) {
     var _this = this;
     var imgUrl = "";
@@ -92,8 +94,10 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
             );
     };
 }]);
+//Controller for details.html view
 journalistControllers.controller("EditArticleController", ["$http", "$routeParams", "$location", function ($http, $routeParams, $location) {
     var _this = this;
+    //using $routeParams to get the ID on clicked element
     _this.id = $routeParams.id;
     _this.title = "";
     _this.dateTime = "";

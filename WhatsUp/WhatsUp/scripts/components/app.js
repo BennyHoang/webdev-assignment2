@@ -3,6 +3,9 @@
     "journalistControllers"
 ]);
 
+
+//docs for routing: https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
+
 journalistApp.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.
         when("/list", {
