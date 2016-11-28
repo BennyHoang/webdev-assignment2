@@ -23,16 +23,17 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
     _this.id = "";
     _this.title = "";
 
-    _this.imageToUpload = {};
+    $scope.imageToUpload = {};
 
     $scope.setImageToUpload = function(files) {
-        _this.imageToUpload = files[0];
+        $scope.imageToUpload = files[0];
+        //console.log($scope.imageToUpload.name);
     }
 
     _this.uploadImage = function() {
         var uploadImageUrl = "api/Journalist/UploadImage";
         var formData = new FormData();
-        formData.append("file", _this.imageToUpload);
+        formData.append("file", $scope.imageToUpload);
 
         $http
             .post(
@@ -48,13 +49,9 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
             )
             .then(
                 function (response) {
-                    //HAcking so image filepath is working 
-                    var url = response.data;
-                    var splitUrl = url.split('\\').pop(-1);
-                    imgUrl = "Images\\" + splitUrl;
-
+                    imgUrl = "Images/" + $scope.imageToUpload.name;
                     console.log(imgUrl);
-                    
+
                 },
                 function(response) {
                     console.log(response);
@@ -94,6 +91,7 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
     var _this = this;
     _this.id = $routeParams.id;
     _this.title = "";
+    _this.dateTime = "";
 
 
     _this.getArticle = function () {
@@ -111,8 +109,10 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                 function (response) {
                     var id = response.data.article.id;
                     var title = response.data.article.title;
+                    var dateTime = response.data.article.dateTime;
                     _this.id = id;
                     _this.title = title;
+                    _this.dateTime = dateTime;
 
                 },
                 function (response) {

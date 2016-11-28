@@ -47,4 +47,15 @@
     <title>another article with img but is working</title>
     <img>Images\1.png</img>
   </article>
+  <article>
+    <id>2030</id>
+    <title>new title with post man</title>
+    <img>Images\1.png</img>
+  </article>
+  <article>
+    <id>210938</id>
+    <title>new pichaarr</title>
+    <img></img>
+    <dateTime>2016-11-28T12:31:06.7734699+01:00</dateTime>
+  </article>
 </articles>

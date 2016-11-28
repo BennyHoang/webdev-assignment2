@@ -21980,7 +21980,7 @@
 	                null,
 	                this.props.title
 	            ),
-	            React.createElement("img", { src: this.props.img, alt: this.props.title })
+	            React.createElement("img", { className: "img-responsive", src: this.props.img, alt: this.props.title })
 	        );
 	    }
 	});

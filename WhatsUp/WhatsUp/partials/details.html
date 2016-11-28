@@ -2,6 +2,7 @@
     <section class="row">
 
         <h2>Article ID: {{editArticleCtrl.id}}</h2>
+        <p>Last modified: <span ng-bind="editArticleCtrl.dateTime | date:'MM/dd/yyyy HH:mm:ss'"></span></p>
         <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" ng-model="editArticleCtrl.title" />

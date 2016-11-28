@@ -30,12 +30,14 @@ namespace WhatsUp.Controllers
         public HttpResponseMessage PostArticle(Article _article)
         {
             XElement articleXML = XElement.Load(GetDBFilePath());
-
+            DateTime localDate = DateTime.Now;
+            
             articleXML.Add(
                     new XElement("article",
                         new XElement("id", _article.Id),
                         new XElement("title", _article.Title),
-                        new XElement("img", _article.Img )
+                        new XElement("img", _article.Img ),
+                        new XElement("dateTime", localDate)
                     )
                 );
             articleXML.Save(GetDBFilePath());

@@ -5,7 +5,7 @@ var Article = React.createClass({
             <article className="col col-md-6">
                 <h2>{this.props.id}</h2>
                 <h3>{this.props.title}</h3>
-                <img src={this.props.img} alt={this.props.title}/>
+                <img className="img-responsive" src={this.props.img} alt={this.props.title}/>
             </article>
         );
     }
