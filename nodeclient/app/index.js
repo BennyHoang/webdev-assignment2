@@ -23,14 +23,14 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
         alert(_this.id);
     };
 
-    _this.getArticleById = function () {
+    _this.getArticleById = function (idFromReact) {
         var getArticleByIdUrl = "api/Customer/GetArticleById";
         $http
             .get(
                 getArticleByIdUrl,
                 {
                     params: {
-                        id: _this.id
+                        id: idFromReact
                     }
                 }
             )

@@ -66,11 +66,11 @@
 	        alert(_this.id);
 	    };
 
-	    _this.getArticleById = function () {
+	    _this.getArticleById = function (idFromReact) {
 	        var getArticleByIdUrl = "api/Customer/GetArticleById";
 	        $http.get(getArticleByIdUrl, {
 	            params: {
-	                id: _this.id
+	                id: idFromReact
 	            }
 	        }).then(function (response) {
 	            var id = response.data.article.id;
@@ -22014,32 +22014,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-
 	var SearchArticle = React.createClass({
 	    displayName: "SearchArticle",
 
 	    getInitialState: function () {
-	        alert(this.props.id);
-	        return { input: this.props.id };
+	        alert(this.props.text);
+	        return { input: this.props.text };
 	    },
 	    handleChange: function (e) {
 	        this.setState({ input: e.target.value });
 	    },
 	    handleClick: function () {
 	        var state = this.state.input;
-	        var props = this.props.id;
+	        var props = this.props.text;
 	        console.log("props: " + props + " state: " + state);
 	        props = state;
 	        console.log("merged: " + props);
-	        console.log("raw merged: " + this.props.id);
-	        this.props.onClick();
+	        this.props.text = this.state.input;
+	        console.log("raw merged: " + this.props.text);
+	        this.props.onClick(state);
 	    },
 	    render: function () {
 
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement("input", { type: "text", onChange: this.handleChange.bind(this) }),
+	            React.createElement("input", { type: "text", onChange: this.handleChange }),
 	            React.createElement("input", { onClick: this.handleClick, type: "button", defaultValue: "Hent" })
 	        );
 	    }
