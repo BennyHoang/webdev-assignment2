@@ -4,21 +4,22 @@
         <h3>id: {{postArticleCtrl.id}}</h3>
         <form ng-submit="postArticleCtrl.postArticle()">
             <div class="form-group">
-                <label>Upload image</label>
-                <input type="file" onchange="angular.element(this).scope().setImageToUpload(this.files)"/>
 
-                <img class="img-responsive" id="img_thumbnail"/>
+                <label>Upload image</label>
+                <input id="file_upload" type="file" onchange="angular.element(this).scope().setImageToUpload(this.files)" />
+
+                <img ng-src="{{img_src}}"></img>
             </div>
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" class="form-control" ng-model="postArticleCtrl.title"/>
+                <input type="text" class="form-control" ng-model="postArticleCtrl.title" />
             </div>
             <div class="form-group">
                 <label>Description</label>
                 <textarea rows="5" class="form-control" ng-model="postArticleCtrl.description"></textarea>
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Post article"/>
+            <input class="btn btn-primary" type="submit" value="Post article" />
         </form>
     </section>
 </div>

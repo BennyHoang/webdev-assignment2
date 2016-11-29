@@ -36,8 +36,14 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
     $scope.setImageToUpload = function(files) {
         $scope.imageToUpload = files[0];
         imgUrl = "Images/" + $scope.imageToUpload.name;
-        $("#img_thumbnail").attr("src", imgUrl);
-        //console.log($scope.imageToUpload.name);
+        console.log($scope.imageToUpload);
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $scope.img_src = e.target.result;
+            $scope.$apply();
+        }
+        reader.readAsDataURL(files[0]);
     }
 
     _this.uploadImage = function() {
