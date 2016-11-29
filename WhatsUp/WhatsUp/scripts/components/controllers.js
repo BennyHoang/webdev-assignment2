@@ -83,7 +83,8 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
                 }
             )
             .then(
-                function(response) {
+                function (response) {
+                    _this.uploadImage();
                     alert("Article Posted " + response);
                     $location.path("/list");
                 },
