@@ -14,14 +14,15 @@ namespace WhatsUp.Controllers
         DateTime localDate = DateTime.Now;
         public HttpResponseMessage UploadImage()
         {
-            String fileName = null;
+
             if (System.Web.HttpContext.Current.Request.Files != null)
             {
                 var file = System.Web.HttpContext.Current.Request.Files[0];
-                fileName = file.FileName;
+                var fileName = file.FileName;
                 file.SaveAs(GetImageFilePath(fileName));
             }
-            return Request.CreateResponse(HttpStatusCode.OK, GetImageFilePath(fileName));
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         private String GetImageFilePath(String filename)

@@ -70,6 +70,7 @@
 	            }
 	        }).then(function (response) {
 	            _this.articleList = response.data;
+	            //http://jsfiddle.net/8TT4p/67/
 	            var array = Object.keys(_this.articleList).map(function (k) {
 	                return _this.articleList[k];
 	            });
@@ -21914,7 +21915,12 @@
 	                null,
 	                this.props.title
 	            ),
-	            React.createElement("img", { className: "img-responsive", src: img, alt: this.props.title })
+	            React.createElement("img", { className: "img-responsive", src: img, alt: this.props.title }),
+	            React.createElement(
+	                "p",
+	                null,
+	                this.props.description
+	            )
 	        );
 	    }
 	});
@@ -21924,15 +21930,15 @@
 	    render: function () {
 	        var articles;
 	        console.log(this.props.list.length);
-	        if (this.props.list.length > 2) {
+	        if (this.props.list.length != 1) {
 	            articles = this.props.list.map(function (article) {
 	                console.log(article.length);
-	                return React.createElement(Article, { title: article.article.title, id: article.article.id, img: article.article.img });
+	                return React.createElement(Article, { title: article.article.title, id: article.article.id, img: article.article.img, description: article.article.description });
 	            });
 	        } else {
 	            articles = this.props.list.map(function (article) {
 	                console.log(article);
-	                return React.createElement(Article, { title: article.title, id: article.id, img: article.img });
+	                return React.createElement(Article, { title: article.title, id: article.id, img: article.img, description: article.description });
 	            });
 	        }
 

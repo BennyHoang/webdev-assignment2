@@ -33,20 +33,22 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
 
     $scope.imageToUpload = {};
 
-    $scope.setImageToUpload = function(files) {
+    $scope.setImageToUpload = function (files) {
         $scope.imageToUpload = files[0];
         imgUrl = "Images/" + $scope.imageToUpload.name;
         console.log($scope.imageToUpload);
+        //http://codepedia.info/html5-filereader-preview-image-show-thumbnail-image-before-uploading-on-server-in-jquery/
+
         var reader = new FileReader();
 
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             $scope.img_src = e.target.result;
             $scope.$apply();
         }
         reader.readAsDataURL(files[0]);
     }
 
-    _this.uploadImage = function() {
+    _this.uploadImage = function () {
         var uploadImageUrl = "api/Journalist/UploadImage";
         var formData = new FormData();
         formData.append("file", $scope.imageToUpload);
@@ -65,9 +67,9 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
             )
             .then(
                 function (response) {
-                    
+
                 },
-                function(response) {
+                function (response) {
                     console.log(response);
                 }
             );
@@ -75,7 +77,6 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
 
     _this.postArticle = function () {
         var postArticleUrl = "api/Journalist/PostArticle";
-
         $http
             .post(
                 postArticleUrl,
@@ -97,7 +98,7 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
                     alert("Article Posted " + response);
                     $location.path("/list");
                 },
-                function(response) {
+                function (response) {
                     console.log(response);
                 }
             );
