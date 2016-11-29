@@ -8,20 +8,16 @@ var SearchArticle = require("./components/SearchArticle");
 var angular = require("angular");
 
 var articleApp = angular.module("articleApp", []);
-   
-    ReactDOM.render(
-        <App/>,
-        document.getElementById("app")
-    );
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("app")
+);
 
 articleApp.controller("ArticleController", ["$http", function ($http) {
     var _this = this;
     _this.id = "";
     _this.title = "";
-
-    _this.sayHello = function(){
-        alert(_this.id);
-    };
 
     _this.getArticleById = function (idFromReact) {
         var getArticleByIdUrl = "api/Customer/GetArticleById";
@@ -35,28 +31,29 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
                 }
             )
             .then(
-                function(response){
-                    var id = response.data.article.id;
-                    var title = response.data.article.title;
-                    _this.id = id;
-                    _this.title = title;
+                function (response) {
                     _this.articleList = response.data;
+                    var array = Object.keys(_this.articleList).map(function (k) { return _this.articleList[k] });
+                    //console.log(array);
                     ReactDOM.render(
-                        <ArticleContent list={_this.articleList}/>,
+                        <ArticleContent list={array} />,
                         document.getElementById("articleContainer")
                     );
                 },
-                function(response){
-                    console.log("No go", response);
+                function (response) {
+                    ReactDOM.render(
+                        <Error />,
+                        document.getElementById("articleContainer")
+                    );
                 }
             );
     };
 
     ReactDOM.render(
-        <SearchArticle onClick={_this.getArticleById}/>,
+        <SearchArticle onClick={_this.getArticleById} />,
         document.getElementById("searchArticleContainer")
     );
-    var getArticles = function () {
+    _this.getArticles = function () {
         var getArticlesUrl = "api/Customer/GetAllArticles";
         $http
             .get(getArticlesUrl)

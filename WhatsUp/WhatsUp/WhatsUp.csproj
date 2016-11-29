@@ -113,6 +113,9 @@
     <Content Include="App_Data\articleDB.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="css\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Images\1.png" />
     <Content Include="index.html" />
@@ -144,6 +147,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="css\main.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

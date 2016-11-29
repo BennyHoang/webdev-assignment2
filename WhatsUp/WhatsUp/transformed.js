@@ -62,10 +62,6 @@
 	    _this.id = "";
 	    _this.title = "";
 
-	    _this.sayHello = function () {
-	        alert(_this.id);
-	    };
-
 	    _this.getArticleById = function (idFromReact) {
 	        var getArticleByIdUrl = "api/Customer/GetArticleById";
 	        $http.get(getArticleByIdUrl, {
@@ -73,19 +69,19 @@
 	                id: idFromReact
 	            }
 	        }).then(function (response) {
-	            var id = response.data.article.id;
-	            var title = response.data.article.title;
-	            _this.id = id;
-	            _this.title = title;
 	            _this.articleList = response.data;
-	            ReactDOM.render(React.createElement(ArticleContent, { list: _this.articleList }), document.getElementById("articleContainer"));
+	            var array = Object.keys(_this.articleList).map(function (k) {
+	                return _this.articleList[k];
+	            });
+	            //console.log(array);
+	            ReactDOM.render(React.createElement(ArticleContent, { list: array }), document.getElementById("articleContainer"));
 	        }, function (response) {
-	            console.log("No go", response);
+	            ReactDOM.render(React.createElement(Error, null), document.getElementById("articleContainer"));
 	        });
 	    };
 
 	    ReactDOM.render(React.createElement(SearchArticle, { onClick: _this.getArticleById }), document.getElementById("searchArticleContainer"));
-	    var getArticles = function () {
+	    _this.getArticles = function () {
 	        var getArticlesUrl = "api/Customer/GetAllArticles";
 	        $http.get(getArticlesUrl).then(function (response) {
 	            _this.articleList = response.data;
@@ -21851,7 +21847,7 @@
 	                React.createElement(
 	                    "a",
 	                    { className: "navbar-brand", href: "/" },
-	                    "HOVEDPROSJEKT"
+	                    "WhatsUp"
 	                )
 	            ),
 	            React.createElement(
@@ -21862,53 +21858,11 @@
 	                    { className: "nav navbar-nav navbar-right" },
 	                    React.createElement(
 	                        "li",
-	                        { className: "dropdown" },
+	                        null,
 	                        React.createElement(
 	                            "a",
-	                            { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false" },
-	                            "Nyheter ",
-	                            React.createElement("span", { className: "caret" })
-	                        ),
-	                        React.createElement(
-	                            "ul",
-	                            { className: "dropdown-menu" },
-	                            React.createElement(
-	                                "li",
-	                                null,
-	                                React.createElement(
-	                                    "a",
-	                                    { href: "/news/5" },
-	                                    "INSTALLASJON & BEDRIFT BRIEF"
-	                                )
-	                            ),
-	                            React.createElement(
-	                                "li",
-	                                null,
-	                                React.createElement(
-	                                    "a",
-	                                    { href: "/news/4" },
-	                                    "SPEED DATE"
-	                                )
-	                            ),
-	                            React.createElement(
-	                                "li",
-	                                null,
-	                                React.createElement(
-	                                    "a",
-	                                    { href: "/news/3" },
-	                                    "FORBREDELSER TIL HOVEDPROSJEKTET"
-	                                )
-	                            ),
-	                            React.createElement("li", { role: "separator", className: "divider" }),
-	                            React.createElement(
-	                                "li",
-	                                null,
-	                                React.createElement(
-	                                    "a",
-	                                    { href: "/news" },
-	                                    "se alle nyheter"
-	                                )
-	                            )
+	                            { href: "/index.html" },
+	                            "Customer"
 	                        )
 	                    ),
 	                    React.createElement(
@@ -21916,17 +21870,8 @@
 	                        null,
 	                        React.createElement(
 	                            "a",
-	                            { href: "/group_members" },
-	                            "Teamet"
-	                        )
-	                    ),
-	                    React.createElement(
-	                        "li",
-	                        null,
-	                        React.createElement(
-	                            "a",
-	                            { href: "/contact" },
-	                            "Kontakt oss"
+	                            { href: "/admin.html" },
+	                            "Admin"
 	                        )
 	                    )
 	                )
@@ -21951,7 +21896,7 @@
 	            { className: "col col-md-6" },
 	            React.createElement(
 	                "h2",
-	                null,
+	                { className: "title-id" },
 	                this.props.id
 	            ),
 	            React.createElement(
@@ -21967,10 +21912,19 @@
 	    displayName: "ArticleContent",
 
 	    render: function () {
-
-	        var articles = this.props.list.map(function (article) {
-	            return React.createElement(Article, { title: article.article.title, id: article.article.id, img: article.article.img });
-	        });
+	        var articles;
+	        console.log(this.props.list.length);
+	        if (this.props.list.length > 2) {
+	            articles = this.props.list.map(function (article) {
+	                console.log(article.length);
+	                return React.createElement(Article, { title: article.article.title, id: article.article.id, img: article.article.img });
+	            });
+	        } else {
+	            articles = this.props.list.map(function (article) {
+	                console.log(article);
+	                return React.createElement(Article, { title: article.title, id: article.id, img: article.img });
+	            });
+	        }
 
 	        return React.createElement(
 	            "section",
@@ -22023,9 +21977,13 @@
 
 	        return React.createElement(
 	            "div",
-	            null,
-	            React.createElement("input", { type: "text", onChange: this.handleChange }),
-	            React.createElement("input", { onClick: this.handleClick, type: "button", defaultValue: "Hent" })
+	            { className: "input-group" },
+	            React.createElement("input", { className: "form-control", type: "text", onChange: this.handleChange, placeholder: "search article by ID" }),
+	            React.createElement(
+	                "span",
+	                { className: "input-group-btn" },
+	                React.createElement("input", { className: "btn btn-primary", onClick: this.handleClick, type: "button", defaultValue: "Hent" })
+	            )
 	        );
 	    }
 	});
