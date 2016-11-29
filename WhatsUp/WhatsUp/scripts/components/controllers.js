@@ -111,6 +111,7 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
     _this.id = $routeParams.id;
     _this.title = "";
     _this.dateTime = "";
+    _this.description = "";
 
 
     _this.getArticle = function () {
@@ -129,9 +130,11 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                     var id = response.data.article.id;
                     var title = response.data.article.title;
                     var dateTime = response.data.article.dateTime;
+                    var description = response.data.article.description;
                     _this.id = id;
                     _this.title = title;
                     _this.dateTime = dateTime;
+                    _this.description = description;
 
                 },
                 function (response) {

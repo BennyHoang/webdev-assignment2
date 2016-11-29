@@ -5,7 +5,11 @@
         <p>Last modified: <span ng-bind="editArticleCtrl.dateTime | date:'MM/dd/yyyy HH:mm:ss'"></span></p>
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" ng-model="editArticleCtrl.title" />
+            <input type="text" class="form-control" ng-model="editArticleCtrl.title"/>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea rows="5" class="form-control" ng-model="editArticleCtrl.description"></textarea>
         </div>
         <input type="button" ng-click="editArticleCtrl.putArticle()" class="btn btn-primary" value="update" />
         <input type="button" ng-click="editArticleCtrl.deleteArticle()" class="btn btn-danger" value="delete" />
