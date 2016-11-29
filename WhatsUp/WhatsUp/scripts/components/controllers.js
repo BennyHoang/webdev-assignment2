@@ -34,6 +34,7 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
 
     $scope.setImageToUpload = function(files) {
         $scope.imageToUpload = files[0];
+        imgUrl = "Images/" + $scope.imageToUpload.name;
         //console.log($scope.imageToUpload.name);
     }
 
@@ -56,9 +57,7 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
             )
             .then(
                 function (response) {
-                    imgUrl = "Images/" + $scope.imageToUpload.name;
-                    console.log(imgUrl);
-
+                    
                 },
                 function(response) {
                     console.log(response);

@@ -14,9 +14,9 @@ var SearchArticle = React.createClass({
         
         return (
             <div className="input-group">
-                <input className="form-control" type="text" onChange={this.handleChange} placeholder="search article by ID"/>
+                <input className="form-control" type="text" onChange={this.handleChange} placeholder="search article by ID..."/>
                 <span className="input-group-btn">
-                    <input className="btn btn-primary" onClick={this.handleClick} type="button" defaultValue="Hent" />
+                    <input className="btn btn-primary" onClick={this.handleClick} type="button" defaultValue="Search" />
                 </span>
             </div>
         );

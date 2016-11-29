@@ -21827,51 +21827,55 @@
 
 	    render: function () {
 	        return React.createElement(
-	            "div",
-	            { className: "container" },
+	            "nav",
+	            { className: "navbar navbar-default" },
 	            React.createElement(
 	                "div",
-	                { className: "navbar-header" },
+	                { className: "container" },
 	                React.createElement(
-	                    "button",
-	                    { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" },
+	                    "div",
+	                    { className: "navbar-header" },
 	                    React.createElement(
-	                        "span",
-	                        { className: "sr-only" },
-	                        "Toggle navigation"
+	                        "button",
+	                        { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" },
+	                        React.createElement(
+	                            "span",
+	                            { className: "sr-only" },
+	                            "Toggle navigation"
+	                        ),
+	                        React.createElement("span", { className: "icon-bar" }),
+	                        React.createElement("span", { className: "icon-bar" }),
+	                        React.createElement("span", { className: "icon-bar" })
 	                    ),
-	                    React.createElement("span", { className: "icon-bar" }),
-	                    React.createElement("span", { className: "icon-bar" }),
-	                    React.createElement("span", { className: "icon-bar" })
+	                    React.createElement(
+	                        "a",
+	                        { className: "navbar-brand", href: "/" },
+	                        "WhatsUp"
+	                    )
 	                ),
 	                React.createElement(
-	                    "a",
-	                    { className: "navbar-brand", href: "/" },
-	                    "WhatsUp"
-	                )
-	            ),
-	            React.createElement(
-	                "div",
-	                { id: "navbar", className: "navbar-collapse collapse" },
-	                React.createElement(
-	                    "ul",
-	                    { className: "nav navbar-nav navbar-right" },
+	                    "div",
+	                    { id: "navbar", className: "navbar-collapse collapse" },
 	                    React.createElement(
-	                        "li",
-	                        null,
+	                        "ul",
+	                        { className: "nav navbar-nav navbar-right" },
 	                        React.createElement(
-	                            "a",
-	                            { href: "/index.html" },
-	                            "Customer"
-	                        )
-	                    ),
-	                    React.createElement(
-	                        "li",
-	                        null,
+	                            "li",
+	                            null,
+	                            React.createElement(
+	                                "a",
+	                                { href: "/index.html" },
+	                                "Customer"
+	                            )
+	                        ),
 	                        React.createElement(
-	                            "a",
-	                            { href: "/admin.html" },
-	                            "Admin"
+	                            "li",
+	                            null,
+	                            React.createElement(
+	                                "a",
+	                                { href: "/admin.html" },
+	                                "Admin"
+	                            )
 	                        )
 	                    )
 	                )
@@ -21891,6 +21895,12 @@
 	    displayName: "Article",
 
 	    render: function () {
+	        var img;
+	        if (this.props.img === "") {
+	            img = "Images/404.jpg";
+	        } else {
+	            img = this.props.img;
+	        }
 	        return React.createElement(
 	            "article",
 	            { className: "col col-md-6" },
@@ -21904,7 +21914,7 @@
 	                null,
 	                this.props.title
 	            ),
-	            React.createElement("img", { className: "img-responsive", src: this.props.img, alt: this.props.title })
+	            React.createElement("img", { className: "img-responsive", src: img, alt: this.props.title })
 	        );
 	    }
 	});
@@ -21978,11 +21988,11 @@
 	        return React.createElement(
 	            "div",
 	            { className: "input-group" },
-	            React.createElement("input", { className: "form-control", type: "text", onChange: this.handleChange, placeholder: "search article by ID" }),
+	            React.createElement("input", { className: "form-control", type: "text", onChange: this.handleChange, placeholder: "search article by ID..." }),
 	            React.createElement(
 	                "span",
 	                { className: "input-group-btn" },
-	                React.createElement("input", { className: "btn btn-primary", onClick: this.handleClick, type: "button", defaultValue: "Hent" })
+	                React.createElement("input", { className: "btn btn-primary", onClick: this.handleClick, type: "button", defaultValue: "Search" })
 	            )
 	        );
 	    }

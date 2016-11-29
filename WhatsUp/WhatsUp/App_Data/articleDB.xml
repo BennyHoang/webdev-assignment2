@@ -18,4 +18,22 @@
     <img></img>
     <dateTime>2016-11-28T13:11:08.5701762+01:00</dateTime>
   </article>
+  <article>
+    <id>10025</id>
+    <title>new post yes</title>
+    <img></img>
+    <dateTime>2016-11-29T13:31:34.3315194+01:00</dateTime>
+  </article>
+  <article>
+    <id>10026</id>
+    <title>new post with dowg</title>
+    <img>Images/dog-1210559_960_720.jpg</img>
+    <dateTime>2016-11-29T13:31:55.2498574+01:00</dateTime>
+  </article>
+  <article>
+    <id>10027</id>
+    <title>a new article</title>
+    <img>Images/dog-1210559_960_720.jpg</img>
+    <dateTime>2016-11-29T13:38:21.8807739+01:00</dateTime>
+  </article>
 </articles>

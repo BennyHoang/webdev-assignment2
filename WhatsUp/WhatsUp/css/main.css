@@ -1,12 +1,21 @@
 .title-id {
   position: absolute;
   top: 36px;
-  background-color: white;
-  opacity: 0.6;
+  background-color: #FE423F;
+  opacity: 0.8;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: black;
+  color: white;
   padding-left: 15px;
   padding-right: 15px; }
+
+.navbar, .navbar-default {
+  background-color: #FE423F; }
+  .navbar .navbar-brand, .navbar .navbar-nav > li > a, .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+    color: white; }
+  .navbar .navbar-toggle .icon-bar, .navbar-default .navbar-toggle .icon-bar {
+    background-color: white; }
+  .navbar .navbar-toggle:hover, .navbar-default .navbar-toggle:hover {
+    background-color: #ba1e1c; }
 
 /*# sourceMappingURL=main.css.map */

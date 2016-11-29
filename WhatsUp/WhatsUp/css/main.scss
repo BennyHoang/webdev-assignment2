@@ -1,11 +1,32 @@
-.title-id{
+$red: #FE423F;
+$red-dark:#ba1e1c;
+
+.title-id {
     position: absolute;
     top: 36px;
-    background-color: white;
-    opacity: 0.6;
+    background-color: $red;
+    opacity: 0.8;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: black;
+    color: white;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+.navbar, .navbar-default {
+    background-color: $red;
+
+    .navbar-brand, .navbar-nav > li > a {
+        color: white;
+    }
+
+    .navbar-toggle {
+        .icon-bar {
+            background-color: white;
+        }
+        &:hover{
+            background-color:$red-dark;
+        }
+    }
 }

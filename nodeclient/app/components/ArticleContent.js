@@ -1,11 +1,17 @@
 var React = require("react");
 var Article = React.createClass({
     render: function () {
+        var img;
+        if(this.props.img === ""){
+            img = "Images/404.jpg";
+        }else{
+            img = this.props.img;
+        }
         return (
             <article className="col col-md-6">
                 <h2 className="title-id">{this.props.id}</h2>
                 <h3>{this.props.title}</h3>
-                <img className="img-responsive" src={this.props.img} alt={this.props.title} />
+                <img className="img-responsive" src={img} alt={this.props.title} />
             </article>
         );
     }
