@@ -28,14 +28,15 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
     var _this = this;
     var imgUrl = "";
     _this.id = setId(lastID);
-
     _this.title = "";
+    _this.description = "";
 
     $scope.imageToUpload = {};
 
     $scope.setImageToUpload = function(files) {
         $scope.imageToUpload = files[0];
         imgUrl = "Images/" + $scope.imageToUpload.name;
+        $("#img_thumbnail").attr("src", imgUrl);
         //console.log($scope.imageToUpload.name);
     }
 
@@ -76,7 +77,8 @@ journalistControllers.controller("PostArticleController", ["$http", "$location",
                     {
                         id: _this.id,
                         title: _this.title,
-                        img: imgUrl
+                        img: imgUrl,
+                        description: _this.description
                     }
                 ),
                 {

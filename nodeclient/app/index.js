@@ -33,6 +33,7 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
             .then(
                 function (response) {
                     _this.articleList = response.data;
+                    //http://jsfiddle.net/8TT4p/67/
                     var array = Object.keys(_this.articleList).map(function (k) { return _this.articleList[k] });
                     //console.log(array);
                     ReactDOM.render(

@@ -11,5 +11,6 @@ namespace WhatsUp.Models
         public int Id { get; set; }
         public String Title { get; set; }
         public String Img { get; set; }
+        public String Description { get; set; }
     }
 }

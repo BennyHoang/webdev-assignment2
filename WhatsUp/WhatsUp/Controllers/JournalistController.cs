@@ -37,6 +37,7 @@ namespace WhatsUp.Controllers
                     new XElement("article",
                         new XElement("id", _article.Id),
                         new XElement("title", _article.Title),
+                        new XElement("description", _article.Description),
                         new XElement("img", _article.Img ),
                         new XElement("dateTime", localDate)
                     )
@@ -63,6 +64,7 @@ namespace WhatsUp.Controllers
                                    select article).SingleOrDefault();
 
             selectedArticle.SetElementValue("title", _article.Title);
+            selectedArticle.SetElementValue("description", _article.Description);
             selectedArticle.SetElementValue("dateTime", localDate);
             articleXML.Save(GetDBFilePath());
 

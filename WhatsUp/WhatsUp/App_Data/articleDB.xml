@@ -1,22 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <articles>
   <article>
-    <id>1002</id>
-    <title>New title ya?</title>
-    <img>Images/1.png</img>
-    <dateTime>2016-11-28T12:51:40.6450874+01:00</dateTime>
-  </article>
-  <article>
     <id>10023</id>
     <title>rlitjaelieja</title>
     <img>Images/1.png</img>
     <dateTime>2016-11-28T12:59:09.154301+01:00</dateTime>
-  </article>
-  <article>
-    <id>10024</id>
-    <title>New title</title>
-    <img></img>
-    <dateTime>2016-11-28T13:11:08.5701762+01:00</dateTime>
   </article>
   <article>
     <id>10025</id>
