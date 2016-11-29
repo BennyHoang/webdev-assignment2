@@ -27,7 +27,11 @@ journalistControllers.controller("ArticleController", ["$http", function ($http)
 journalistControllers.controller("PostArticleController", ["$http", "$location", "$scope", function ($http, $location, $scope) {
     var _this = this;
     var imgUrl = "";
-    _this.id = lastID;
+    if (lastID === "") {
+        _this.id = getRandomInteger(1, 100);
+    } else {
+        _this.id = lastID;
+    }
     _this.title = "";
 
     $scope.imageToUpload = {};
@@ -178,3 +182,8 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
     };
 
 }]);
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
