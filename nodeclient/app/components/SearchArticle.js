@@ -1,21 +1,13 @@
 var React = require("react");
 var SearchArticle = React.createClass({
     getInitialState: function(){
-        alert(this.props.text);
-        return {input : this.props.text};
+        return {input : ""};
     },
     handleChange: function(e){
         this.setState({input: e.target.value});
     },
     handleClick: function(){
-        var state = this.state.input;
-        var props = this.props.text;
-        console.log("props: " + props + " state: " + state);
-        props = state;
-        console.log("merged: " + props);
-        this.props.text = this.state.input;
-        console.log("raw merged: " + this.props.text)
-        this.props.onClick(state);
+        this.props.onClick(this.state.input);
         
     },
     render: function () {

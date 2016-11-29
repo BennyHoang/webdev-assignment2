@@ -40,6 +40,11 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
                     var title = response.data.article.title;
                     _this.id = id;
                     _this.title = title;
+                    _this.articleList = response.data;
+                    ReactDOM.render(
+                        <ArticleContent list={_this.articleList}/>,
+                        document.getElementById("articleContainer")
+                    );
                 },
                 function(response){
                     console.log("No go", response);
@@ -48,7 +53,7 @@ articleApp.controller("ArticleController", ["$http", function ($http) {
     };
 
     ReactDOM.render(
-        <SearchArticle onClick={_this.getArticleById} text={_this.id}/>,
+        <SearchArticle onClick={_this.getArticleById}/>,
         document.getElementById("searchArticleContainer")
     );
     var getArticles = function () {
