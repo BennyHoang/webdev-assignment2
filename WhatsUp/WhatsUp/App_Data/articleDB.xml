@@ -2,15 +2,23 @@
 <articles>
   <article>
     <id>58</id>
-    <title>empty article</title>
+    <title>empty article why</title>
     <img></img>
-    <dateTime>2016-11-29T19:15:16.9152952+01:00</dateTime>
+    <dateTime>2016-12-01T12:45:43.8596407+01:00</dateTime>
+    <description>HEEEEEYYY OLE IS ASAM &lt;3</description>
   </article>
   <article>
     <id>59</id>
     <title>another article</title>
-    <description>description man</description>
     <img>Images/1.png</img>
-    <dateTime>2016-11-29T19:10:54.0292931+01:00</dateTime>
+    <dateTime>2016-12-01T12:45:16.398459+01:00</dateTime>
+    <description>HELLOOO</description>
+  </article>
+  <article>
+    <id>60</id>
+    <title>Hey jeg heter hole why</title>
+    <img>Images/1.png</img>
+    <dateTime>2016-12-01T12:45:02.013751+01:00</dateTime>
+    <description>hello</description>
   </article>
 </articles>

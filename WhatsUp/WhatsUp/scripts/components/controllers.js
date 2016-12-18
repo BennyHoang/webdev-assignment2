@@ -151,7 +151,8 @@ journalistControllers.controller("EditArticleController", ["$http", "$routeParam
                 JSON.stringify(
                     {
                         id: _this.id,
-                        title: _this.title
+                        title: _this.title,
+                        description: _this.description
                     }
                 ),
                 {
